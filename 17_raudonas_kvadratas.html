@@ -37,7 +37,11 @@
         <div id="figura" onclick="pakeisti()"></div>
     </div>
     <script>
+        var skaicius = 0;
         function pakeisti() {
+            ++skaicius%2 ? keitimas1() : keitimas2();
+        }
+        function keitimas1(){
             var elem = document.getElementById("figura");
             var pos = 0;
             var id = setInterval(frame, 50);
@@ -46,11 +50,24 @@
                     clearInterval(id);
                 } else {
                     elem.style.borderRadius = pos + '%';
-                    elem.style.backgroundColor = 'rgb(' + (pos<=25 ? 150 : 150 - 5 * (pos%25)) + ', ' + (pos>=25 ?  150 : 5 * pos) + ', 0)';
-                    elem.style.transform = 'rotate(' + 7 * pos + 'deg)';                    
+                    elem.style.backgroundColor = 'rgb(' + (pos<=25 ? 155 : 155 - 5.1 * (pos%25)) + ', ' + (pos>=25 ?  155 : 5.1 * pos) + ', 0)';
                     pos++;
                 }
-            }
+            }            
+        }        
+        function keitimas2(){
+            var elem = document.getElementById("figura");
+            var pos = 50;
+            var id = setInterval(frame, 50);
+            function frame() {
+                if (pos == -1) {
+                    clearInterval(id);
+                } else {
+                    elem.style.borderRadius = pos + '%';
+                    elem.style.backgroundColor = 'rgb(' + (pos<=25 ? 155 : 155 - 5.1 * (pos%25)) + ', ' + (pos>=25 ?  155 : 5.1 * pos) + ', 0)';
+                    pos--;
+                }
+            }            
         }
     </script>
 </body>
