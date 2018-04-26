@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>"16-1 užduotis automobiliai"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #conteiner {
+            margin: 20px auto;
+            width: 80vmin;
+            height: 80vmin;
+            background-color: #cecdcd;
+            position: relative;
+        }
+
+        #figura {
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+            background-color: rgb(156, 4, 4);
+            border: 0 solid #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="conteiner">
+        <div id="figura" onclick="pakeisti()"></div>
+    </div>
+    <script>
+        function pakeisti() {
+            var elem = document.getElementById("figura");
+            var pos = 0;
+            var id = setInterval(frame, 50);
+            function frame() {
+                if (pos == 50) {
+                    clearInterval(id);
+                } else {
+                    elem.style.borderRadius = pos + '%';
+                    elem.style.backgroundColor = 'rgb(' + (pos<=25 ? 150 : 150 - 5 * (pos%25)) + ', ' + (pos>=25 ?  150 : 5 * pos) + ', 0)';
+                    elem.style.transform = 'rotate(' + 7 * pos + 'deg)';                    
+                    pos++;
+                }
+            }
+        }
+    </script>
+</body>
